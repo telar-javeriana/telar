@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Descargar Telar — Simulador educativo de OpenMP</title>
+  <meta name="description" content="Descarga Telar para Windows y Linux. Simulador educativo de OpenMP con PyOMP: lee lecciones, ejecuta codigo paralelo real y observa el speedup en vivo." />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Descargar Telar" />
+  <meta property="og:description" content="Simulador educativo de OpenMP con PyOMP, para Windows y Linux." />
+  <meta property="og:locale" content="es_ES" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip" href="#descargas">Saltar a las descargas</a>
+
+  <!-- ============ CABECERA ============================================== -->
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#top">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#A8501E" />
+          <text x="16" y="22" font-family="monospace" font-size="15" font-weight="700"
+                fill="#FDF8EE" text-anchor="middle">T</text>
+        </svg>
+        Telar
+      </a>
+      <span class="chip chip-mono" data-version-chip>—</span>
+      <span class="topbar-spacer"></span>
+      <nav class="topbar-links" aria-label="Enlaces del proyecto">
+        <!-- El icono no es decorativo: bajo 640px la hoja oculta el <span> y el
+             icono queda como unica etiqueta visible del boton. -->
+        <a class="btn btn-ghost btn-sm" data-notes-url aria-label="Notas de la versión"
+           href="https://github.com/telar-javeriana/telar/releases">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+               stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/>
+            <path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/>
+          </svg>
+          <span>Notas de la versión</span>
+        </a>
+        <a class="btn btn-ghost btn-sm" href="https://github.com/telar-javeriana/telar"
+           aria-label="Repositorio en GitHub" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO =============================================== -->
+    <section class="hero">
+      <div class="wrap">
+        <h1>Aprende paralelismo ejecutando código real</h1>
+        <p class="lede">
+          Telar es un simulador educativo de <b>OpenMP con PyOMP</b>. Lee las lecciones,
+          escribe tu código, ejecútalo en paralelo de verdad y observa el <i>speedup</i>
+          en vivo. Funciona en tu equipo, sin cuenta ni conexión a un servidor externo.
+        </p>
+
+        <div class="hero-cta">
+          <!-- Rellenado por app.js segun el sistema detectado. -->
+          <div class="cta-row" data-hero-cta>
+            <a class="btn btn-accent btn-xl" href="#descargas">Ver descargas</a>
+          </div>
+          <p class="cta-meta" data-hero-meta></p>
+        </div>
+
+        <div class="hero-notice">
+          <div class="notice notice-req">
+            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 9v4M12 17h.01"/>
+              <path d="M10.3 3.6 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0Z"/>
+            </svg>
+            <p class="notice-body">
+              <strong>Necesitas Docker instalado y en ejecución.</strong>
+              Telar ejecuta el código de cada estudiante dentro de contenedores aislados,
+              así que Docker es obligatorio en los dos sistemas. Si no lo tienes,
+              instálalo antes: <a href="https://www.docker.com/products/docker-desktop/"
+              rel="noopener" target="_blank">Docker Desktop</a> en Windows,
+              <a href="https://docs.docker.com/engine/install/" rel="noopener" target="_blank">Docker
+              Engine</a> en Linux.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DESCARGAS ========================================== -->
+    <section class="section" id="descargas">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Descargas</h2>
+          <p>
+            Todos los archivos se sirven desde GitHub Releases. Cada plataforma tiene
+            un instalador y una versión portable que no instala nada.
+          </p>
+        </div>
+
+        <div class="platforms" data-platforms>
+          <p class="dl-hint" data-loading>Cargando las descargas…</p>
+        </div>
+
+        <noscript>
+          <div class="notice notice-warn" style="margin-top: 24px">
+            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/>
+            </svg>
+            <p class="notice-body">
+              <strong>Esta página necesita JavaScript para listar las descargas.</strong>
+              Puedes bajarlas directamente desde
+              <a href="https://github.com/telar-javeriana/telar/releases/latest">la página
+              de releases en GitHub</a>.
+            </p>
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ============ INSTALACIÓN ======================================== -->
+    <section class="section" id="instalacion">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Cómo instalarlo</h2>
+          <p>Elige tu sistema. Son cuatro pasos y solo hay que hacerlos una vez.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Sistema operativo">
+          <button class="tab" role="tab" id="tab-windows" aria-controls="panel-windows"
+                  aria-selected="true" data-os="windows" type="button">Windows</button>
+          <button class="tab" role="tab" id="tab-linux" aria-controls="panel-linux"
+                  aria-selected="false" data-os="linux" type="button">Linux</button>
+        </div>
+
+        <!-- ---- Windows ---- -->
+        <div role="tabpanel" id="panel-windows" aria-labelledby="tab-windows" data-panel="windows">
+          <ol class="steps">
+            <li>
+              <h3>Instala Docker Desktop</h3>
+              <p>
+                Descárgalo de
+                <a href="https://www.docker.com/products/docker-desktop/" rel="noopener"
+                   target="_blank">docker.com</a>, instálalo y <b>déjalo abierto</b>.
+                Telar no puede funcionar sin él.
+              </p>
+            </li>
+            <li>
+              <h3>Descarga el instalador</h3>
+              <p>
+                Usa <code data-tpl="win-installer-name">el instalador</code> de la sección
+                de arriba. La versión portable sirve si no puedes instalar programas
+                en el equipo.
+              </p>
+            </li>
+            <li>
+              <h3>Ejecútalo y acepta la advertencia</h3>
+              <p>
+                Windows mostrará «Windows protegió su PC». Pulsa
+                <b>Más información</b> y luego <b>Ejecutar de todas formas</b>.
+              </p>
+              <p>
+                Aparece porque la aplicación no está firmada con un certificado de
+                código comercial, que tiene un coste anual fuera del alcance de un
+                proyecto académico. Puedes comprobar que el archivo es el correcto con
+                <a href="#verificar">los checksums</a>.
+              </p>
+            </li>
+            <li>
+              <h3>Abre Telar</h3>
+              <p>
+                El primer arranque descarga cerca de 1 GB y tarda varios minutos: está
+                bajando el servidor y el entorno de ejecución. Solo pasa la primera vez.
+              </p>
+            </li>
+          </ol>
+        </div>
+
+        <!-- ---- Linux ---- -->
+        <div role="tabpanel" id="panel-linux" aria-labelledby="tab-linux" data-panel="linux" hidden>
+          <ol class="steps">
+            <li>
+              <h3>Instala Docker Engine</h3>
+              <p>
+                Sigue la guía oficial de tu distribución en
+                <a href="https://docs.docker.com/engine/install/" rel="noopener"
+                   target="_blank">docs.docker.com</a>.
+              </p>
+            </li>
+            <li>
+              <h3>Añade tu usuario al grupo <code>docker</code></h3>
+              <p>
+                Sin esto Telar no puede levantar los servicios, porque no tiene permiso
+                para hablar con el demonio de Docker.
+              </p>
+              <div class="cmd">
+                <code>sudo usermod -aG docker $USER</code>
+                <button class="copy" type="button" data-copy>Copiar</button>
+              </div>
+              <p>Después hay que <b>cerrar sesión y volver a entrar</b> para que el cambio surta efecto.</p>
+            </li>
+            <li>
+              <h3>Instala el paquete</h3>
+              <p>Con el <code>.deb</code>, que es la opción recomendada:</p>
+              <div class="cmd">
+                <code data-tpl="deb-install">sudo apt install ./telar-desktop.deb</code>
+                <button class="copy" type="button" data-copy>Copiar</button>
+              </div>
+              <p>
+                Si prefieres el AppImage, que no instala nada, hay que darle permiso de
+                ejecución: los navegadores no lo conservan al descargar.
+              </p>
+              <div class="cmd">
+                <code data-tpl="appimage-run">chmod +x Telar.AppImage &amp;&amp; ./Telar.AppImage</code>
+                <button class="copy" type="button" data-copy>Copiar</button>
+              </div>
+            </li>
+            <li>
+              <h3>Abre Telar</h3>
+              <p>
+                Con el <code>.deb</code> queda en el menú de aplicaciones. El primer
+                arranque descarga cerca de 1 GB y tarda varios minutos: está bajando el
+                servidor y el entorno de ejecución. Solo pasa la primera vez.
+              </p>
+            </li>
+          </ol>
+
+          <div class="notice notice-info" style="margin-top: 32px">
+            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            <p class="notice-body">
+              <strong>Si el AppImage no arranca</strong>
+              En instalaciones mínimas puede faltar alguna librería del sistema. Con
+              <code>libfuse.so.2</code>, instala <code>libfuse2</code>. Con
+              <code>libasound.so.2</code>, instala <code>libasound2t64</code>
+              (o <code>libasound2</code> en Ubuntu anteriores a la 24.04). El formato
+              AppImage no puede declarar dependencias, por eso hay que ponerlas a mano.
+              <b>El <code>.deb</code> no tiene este problema</b> y por eso es el recomendado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REQUISITOS ========================================= -->
+    <section class="section" id="requisitos">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Requisitos y notas</h2>
+        </div>
+        <div class="notice-stack">
+          <div class="notice">
+            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/>
+              <path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4"/>
+            </svg>
+            <p class="notice-body">
+              <strong>Qué necesita tu equipo</strong>
+              Windows 10 u 11 de 64 bits, o Linux de 64 bits (x86-64). Docker instalado
+              y en ejecución. 8 GB de RAM recomendados. <b>No hay versión para macOS.</b>
+            </p>
+          </div>
+          <div class="notice">
+            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+            </svg>
+            <p class="notice-body">
+              <strong>La primera ejecución de código tarda unos segundos</strong>
+              Es la compilación JIT de PyOMP, que traduce tu Python a código máquina
+              paralelo. Las siguientes ejecuciones son rápidas.
+            </p>
+          </div>
+          <div class="notice">
+            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 17l5-5-5-5"/><path d="M12 19h8"/><rect x="2" y="3" width="20" height="18" rx="2"/>
+            </svg>
+            <p class="notice-body">
+              <strong>Telar se administra solo</strong>
+              Al abrir la aplicación arranca sus servicios, y al cerrarla los detiene,
+              para no dejarlos consumiendo recursos en segundo plano. También puedes
+              controlarlos a mano desde el indicador de estado del menú lateral.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VERIFICAR ========================================== -->
+    <section class="section" id="verificar">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Verificar la descarga</h2>
+          <p>
+            Opcional, pero es la forma de comprobar que el archivo que bajaste es
+            exactamente el que se publicó.
+          </p>
+        </div>
+
+        <details class="details">
+          <summary>Ver los checksums SHA-256</summary>
+          <div class="details-body">
+            <p>En Linux, con el archivo de sumas descargado junto a los instaladores:</p>
+            <div class="cmd">
+              <code data-tpl="sha-linux">sha256sum -c SHA256SUMS.txt</code>
+              <button class="copy" type="button" data-copy>Copiar</button>
+            </div>
+            <p style="margin-top: 12px">
+              Ese archivo lista los ejecutables de Windows con espacios en el nombre,
+              pero GitHub los entrega con puntos, así que <code>-c</code> solo casa con
+              los dos artefactos de Linux. Para los <code>.exe</code>, compara a mano
+              con la tabla de abajo.
+            </p>
+            <p style="margin-top: 16px">En PowerShell, archivo por archivo:</p>
+            <div class="cmd">
+              <code data-tpl="sha-win">Get-FileHash "Telar Setup.exe" -Algorithm SHA256</code>
+              <button class="copy" type="button" data-copy>Copiar</button>
+            </div>
+            <div class="sums-scroll" style="margin-top: 20px">
+              <table class="sums">
+                <thead>
+                  <tr><th scope="col">Archivo</th><th scope="col">SHA-256</th></tr>
+                </thead>
+                <tbody data-sums></tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PIE =================================================== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div>
+        <h2>Telar</h2>
+        <p>
+          Simulador educativo de paralelismo con OpenMP y PyOMP. Proyecto de grado,
+          Pontificia Universidad Javeriana.
+        </p>
+        <p data-footer-version></p>
+      </div>
+      <nav aria-label="Enlaces">
+        <a href="#descargas">Descargas</a>
+        <a href="#instalacion">Instalación</a>
+        <a href="#requisitos">Requisitos</a>
+        <a href="#verificar">Verificar la descarga</a>
+        <a data-notes-url href="https://github.com/telar-javeriana/telar/releases">Notas de la versión</a>
+        <a href="https://github.com/telar-javeriana/telar" rel="noopener" target="_blank">Código y releases</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
