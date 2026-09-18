@@ -6,29 +6,29 @@
   "notesUrl": "https://github.com/telar-javeriana/telar/releases/tag/v1.0.6",
   "repo": "telar-javeriana/telar",
   "checksumsUrl": "https://github.com/telar-javeriana/telar/releases/download/v1.0.6/SHA256SUMS-1.0.6.txt",
-  "generatedAt": "2026-09-17T22:35:03.195Z",
+  "generatedAt": "2026-09-18T12:36:11.598Z",
   "downloads": [
     {
       "file": "Telar-1.0.6.AppImage",
       "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.6/Telar-1.0.6.AppImage",
-      "size": 128216266,
+      "size": 128216269,
       "os": "linux",
       "kind": "portable",
       "recommended": false,
       "label": "AppImage",
       "hint": "Cualquier distribución, sin permisos de administrador.",
-      "sha256": "cea5fe4fd3eb09e55037ed7aa161289ac8403c6d7364d805cf291bba849ddd47"
+      "sha256": "c1fec660dbca409dd2121fcb548a6afe66cb7b578a6109db8d812c1aeb8457cd"
     },
     {
       "file": "telar-desktop_1.0.6_amd64.deb",
       "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.6/telar-desktop_1.0.6_amd64.deb",
-      "size": 100707216,
+      "size": 100707396,
       "os": "linux",
       "kind": "installer",
       "recommended": true,
       "label": "Instalador .deb",
       "hint": "Debian, Ubuntu, Mint y derivadas.",
-      "sha256": "356aeedc7939264a383834616b8ab15033bda80b515c42db8de0ef2bbb747ac4"
+      "sha256": "9c4e7c2be611007a0e5e15a77cd2d8ff494395d974b22e9b10794a077366453d"
     },
     {
       "file": "Telar.1.0.6.exe",
@@ -39,7 +39,7 @@
       "recommended": false,
       "label": "Portable",
       "hint": "No instala nada: se ejecuta tal cual.",
-      "sha256": "13e879068878014cc4b45d90ce64a04f9a1d6d9fd40a798dff8219f70ac0bd60"
+      "sha256": "5b6b116722daa9b5c47b4ee5977aae7ba500f415cf511745b95ef7baf338bf52"
     },
     {
       "file": "Telar.Setup.1.0.6.exe",
@@ -50,7 +50,7 @@
       "recommended": true,
       "label": "Instalador",
       "hint": "Se instala y queda en el menú de inicio.",
-      "sha256": "5e6f65694cb9fe46d52230106b1f7d84a932626e199b1d7f18dbad9dfc70dbd1"
+      "sha256": "3abcea111d2951db1211f25898e0f892fd9c94392aa6942c17568d4192b25007"
     }
   ]
 }
