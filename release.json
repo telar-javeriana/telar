@@ -1,56 +1,56 @@
 {
-  "version": "1.0.7",
-  "tag": "v1.0.7",
-  "name": "Telar 1.0.7",
-  "publishedAt": "2026-10-04T20:48:35Z",
-  "notesUrl": "https://github.com/telar-javeriana/telar/releases/tag/v1.0.7",
+  "version": "1.0.8",
+  "tag": "v1.0.8",
+  "name": "Telar 1.0.8",
+  "publishedAt": "2026-10-09T19:26:48Z",
+  "notesUrl": "https://github.com/telar-javeriana/telar/releases/tag/v1.0.8",
   "repo": "telar-javeriana/telar",
-  "checksumsUrl": "https://github.com/telar-javeriana/telar/releases/download/v1.0.7/SHA256SUMS-1.0.7.txt",
-  "generatedAt": "2026-10-04T21:30:28.933Z",
+  "checksumsUrl": "https://github.com/telar-javeriana/telar/releases/download/v1.0.8/SHA256SUMS-1.0.8.txt",
+  "generatedAt": "2026-10-09T19:27:10.742Z",
   "downloads": [
     {
-      "file": "Telar-1.0.7.AppImage",
-      "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.7/Telar-1.0.7.AppImage",
-      "size": 128236746,
+      "file": "Telar-1.0.8.AppImage",
+      "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.8/Telar-1.0.8.AppImage",
+      "size": 128236748,
       "os": "linux",
       "kind": "portable",
       "recommended": false,
       "label": "AppImage",
       "hint": "Cualquier distribución, sin permisos de administrador.",
-      "sha256": "81e7105cd045ba2d658924d08ef4cbd38fc7ba09a7abc77add29385de686b057"
+      "sha256": "a83f5d00b3ef387f9510bea1d2c9a8c8f6fc536c1915ea170b00ea8bfd139ad0"
     },
     {
-      "file": "telar-desktop_1.0.7_amd64.deb",
-      "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.7/telar-desktop_1.0.7_amd64.deb",
-      "size": 100729204,
+      "file": "telar-desktop_1.0.8_amd64.deb",
+      "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.8/telar-desktop_1.0.8_amd64.deb",
+      "size": 100729776,
       "os": "linux",
       "kind": "installer",
       "recommended": true,
       "label": "Instalador .deb",
       "hint": "Debian, Ubuntu, Mint y derivadas.",
-      "sha256": "4dcb15838febd942ffc970d4a3c922d7ea72a58cbe1a3928e91a2ce75abdb118"
+      "sha256": "5ac66036f2462e962cd1cca3ef0973d43485814239ee7621266ceca6dd106d69"
     },
     {
-      "file": "Telar.1.0.7.exe",
-      "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.7/Telar.1.0.7.exe",
-      "size": 100507553,
+      "file": "Telar.1.0.8.exe",
+      "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.8/Telar.1.0.8.exe",
+      "size": 100507802,
       "os": "windows",
       "kind": "portable",
       "recommended": false,
       "label": "Portable",
       "hint": "No instala nada: se ejecuta tal cual.",
-      "sha256": "72a6ead7dc5d7ebd41d6e05cd1c5203241f03f86f9d1dbb454ac1c23de9adeb6"
+      "sha256": "14a99632a36a1dfdb6fb546aca06275b13ea2581bd78fe409502219af16d2a70"
     },
     {
-      "file": "Telar.Setup.1.0.7.exe",
-      "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.7/Telar.Setup.1.0.7.exe",
-      "size": 100681401,
+      "file": "Telar.Setup.1.0.8.exe",
+      "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.8/Telar.Setup.1.0.8.exe",
+      "size": 100681658,
       "os": "windows",
       "kind": "installer",
       "recommended": true,
       "label": "Instalador",
       "hint": "Se instala y queda en el menú de inicio.",
-      "sha256": "7876d93790b4ff1834d155d74233b188bc218ac5b64e56b826e0ac3357d33e53"
+      "sha256": "878c38e479569dc35ed0b9047f1ac71558cd8f57c7d8d5fd657d9e02e486f449"
     }
   ]
 }
