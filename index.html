@@ -5,8 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Descargar Telar — Simulador educativo de OpenMP</title>
   <meta name="description" content="Descarga Telar para Windows y Linux. Simulador educativo de OpenMP con PyOMP: lee lecciones, ejecuta codigo paralelo real y observa el speedup en vivo." />
-  <meta name="color-scheme" content="light" />
+  <meta name="color-scheme" content="light dark" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <!-- Tema antes de pintar (sin destello): lo guardado, o el del sistema.
+       Misma clave y formato que la app ('telar-theme', estado de zustand). -->
+  <script>
+    (function () {
+      var t = null
+      try { t = JSON.parse(localStorage.getItem('telar-theme')).state.theme } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      }
+      document.documentElement.dataset.theme = t
+    })()
+  </script>
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Descargar Telar" />
@@ -53,6 +65,18 @@
           </svg>
           <span>GitHub</span>
         </a>
+        <button type="button" class="btn btn-ghost btn-sm theme-toggle" data-theme-toggle
+                aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro" aria-pressed="false">
+          <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+               stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+               stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+          </svg>
+        </button>
       </nav>
     </div>
   </header>

@@ -293,6 +293,34 @@ function initCopy() {
   }
 }
 
+/** Conmutador claro ⇄ oscuro. El tema inicial ya lo puso el script del <head>;
+ *  aquí solo se cambia y se guarda con el mismo formato que la app. */
+function initTheme() {
+  const root = document.documentElement
+  const button = $('[data-theme-toggle]')
+  if (!button) return
+  const sync = () => {
+    const dark = root.dataset.theme === 'dark'
+    const label = dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'
+    button.setAttribute('aria-pressed', String(dark))
+    button.setAttribute('aria-label', label)
+    button.title = label
+  }
+  sync()
+  button.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark'
+    root.dataset.themeTransition = ''
+    root.dataset.theme = next
+    setTimeout(() => { delete root.dataset.themeTransition }, 240)
+    try {
+      localStorage.setItem('telar-theme', JSON.stringify({ state: { theme: next }, version: 0 }))
+    } catch {
+      // Sin almacenamiento (modo privado estricto): el cambio vale para esta visita.
+    }
+    sync()
+  })
+}
+
 function showLoadError() {
   const host = $('[data-platforms]')
   if (!host) return
@@ -311,6 +339,7 @@ function showLoadError() {
 /* ── Arranque ───────────────────────────────────────────────────────────── */
 
 const os = detectOS()
+initTheme()
 initCopy()
 initTabs(os)
 
