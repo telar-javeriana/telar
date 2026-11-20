@@ -6,51 +6,51 @@
   "notesUrl": "https://github.com/telar-javeriana/telar/releases/tag/v1.0.12",
   "repo": "telar-javeriana/telar",
   "checksumsUrl": "https://github.com/telar-javeriana/telar/releases/download/v1.0.12/SHA256SUMS-1.0.12.txt",
-  "generatedAt": "2026-11-17T10:33:12.491Z",
+  "generatedAt": "2026-11-20T03:42:41.508Z",
   "downloads": [
     {
       "file": "Telar-1.0.12.AppImage",
       "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.12/Telar-1.0.12.AppImage",
-      "size": 128265480,
+      "size": 128212147,
       "os": "linux",
       "kind": "portable",
       "recommended": false,
       "label": "AppImage",
       "hint": "Cualquier distribución, sin permisos de administrador.",
-      "sha256": "f3df02459ecb7cf3d10070d4f228b191cff6840481bf2348b7c53674845f8223"
+      "sha256": "ff24616e6e6f020bb8cac7a759672f59ae70eeae45a928b826aa21f881364c4e"
     },
     {
       "file": "telar-desktop_1.0.12_amd64.deb",
       "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.12/telar-desktop_1.0.12_amd64.deb",
-      "size": 100148068,
+      "size": 100096812,
       "os": "linux",
       "kind": "installer",
       "recommended": true,
       "label": "Instalador .deb",
       "hint": "Debian, Ubuntu, Mint y derivadas.",
-      "sha256": "bffdaf85701b7a6e8768aede2bde3527caac010f1fb28a851e95e66f3f31fee0"
+      "sha256": "249def62e1de5f916ea9e283ce41b4701b1925abc60f8fdaeb1ba08ea4e00c9a"
     },
     {
       "file": "Telar.1.0.12.exe",
       "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.12/Telar.1.0.12.exe",
-      "size": 100528560,
+      "size": 100472917,
       "os": "windows",
       "kind": "portable",
       "recommended": false,
       "label": "Portable",
       "hint": "No instala nada: se ejecuta tal cual.",
-      "sha256": "8ed8e7e2f7635b1c8e0f5bbfe1e4b5c799118c1ed9d54684ae5f0dbd92757682"
+      "sha256": "87db35e593dee14381ada3e6ebd76d7a8581846104e9ee557b4f7e01b1e4bb1f"
     },
     {
       "file": "Telar.Setup.1.0.12.exe",
       "url": "https://github.com/telar-javeriana/telar/releases/download/v1.0.12/Telar.Setup.1.0.12.exe",
-      "size": 100702632,
+      "size": 100618881,
       "os": "windows",
       "kind": "installer",
       "recommended": true,
       "label": "Instalador",
       "hint": "Se instala y queda en el menú de inicio.",
-      "sha256": "c83a31e349ecfdca12db0d2b332ec7ddd721f7384a25cfd8dffbe4631900f7ff"
+      "sha256": "e855e5eafd18bfc5a931c41c7a9e40451cae0d67ac02011759c8868f629b2699"
     }
   ]
 }
