@@ -505,28 +505,9 @@ code, kbd, pre { font-family: var(--font-mono); }
   opacity: .8;
 }
 
-/* ---- Hero: campo de estrellas + HUD ---- */
+/* ---- Hero: el cielo (estrellas, nubes, voladores) está en la sección 14 ---- */
 .hero { position: relative; overflow: hidden; }
 .hero .wrap { position: relative; z-index: 1; }
-.hero::before, .hero::after {
-  content: ''; position: absolute; top: 28px; width: 4px; height: 4px;
-  pointer-events: none; opacity: .55;
-}
-.hero::before {
-  left: 5%;
-  background: var(--accent);
-  box-shadow: 40px 18px 0 var(--info), 96px -4px 0 var(--success), 18px 74px 0 var(--warn-ink),
-              112px 92px 0 var(--accent), 64px 140px 0 var(--info), 8px 190px 0 var(--success),
-              84px 230px 0 var(--warn-ink);
-}
-.hero::after {
-  right: 5%;
-  background: var(--success);
-  box-shadow: -48px 22px 0 var(--accent), -104px 0 0 var(--info), -20px 80px 0 var(--info),
-              -92px 110px 0 var(--warn-ink), -60px 160px 0 var(--accent), -8px 210px 0 var(--warn-ink),
-              -100px 240px 0 var(--success);
-}
-@media (max-width: 860px) { .hero::before, .hero::after { display: none; } }
 
 
 .press-start { color: var(--accent-ink); margin-bottom: calc(var(--sp-1) * -1); }
@@ -584,9 +565,6 @@ code, kbd, pre { font-family: var(--font-mono); }
 @media (prefers-reduced-motion: no-preference) {
   .press-start { animation: blink 1.1s steps(1, end) infinite; }
   @keyframes blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: .15; } }
-  .hero::before { animation: twinkle 2.4s steps(1, end) infinite; }
-  .hero::after { animation: twinkle 2.4s steps(1, end) -1.2s infinite; }
-  @keyframes twinkle { 0%, 55% { opacity: .55; } 56%, 100% { opacity: .15; } }
 }
 
 /* ============ 13 · HERO ÉPICO ============================================
@@ -639,17 +617,6 @@ code, kbd, pre { font-family: var(--font-mono); }
 .hero-stats b { font-size: 9px; color: var(--text); }
 .hero-stats span { font-size: var(--fs-xs); color: var(--text-muted); }
 
-/* Cielo: nubes de píxel que cruzan despacio */
-.hero-sky { position: absolute; inset: 0 0 auto 0; height: 60%; pointer-events: none; z-index: 0; overflow: hidden; }
-.cloud {
-  position: absolute; left: -90px; width: 80px; height: 32px;
-  background: var(--border-accent); opacity: .55;
-  -webkit-mask: var(--cloud) center / 100% 100% no-repeat; mask: var(--cloud) center / 100% 100% no-repeat;
-  --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 8' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h6v1H6z M4 1h10v1H4z M2 2h16v1H2z M0 3h20v3H0z M2 6h16v1H2z'/%3E%3C/svg%3E");
-}
-.cloud.c1 { top: 12%; }
-.cloud.c2 { top: 34%; width: 56px; height: 22px; opacity: .4; left: 38%; }
-.cloud.c3 { top: 58%; width: 100px; height: 40px; opacity: .3; left: 72%; }
 
 /* Horizonte: montañas escalonadas sobre la trama de telar */
 .hero-ground { position: absolute; inset: auto 0 0 0; height: 96px; pointer-events: none; z-index: 0; }
@@ -727,15 +694,80 @@ code, kbd, pre { font-family: var(--font-mono); }
 .ticker-track i { width: 8px; height: 8px; background: var(--on-accent); opacity: .7; flex: none; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .cloud.c1 { animation: drift 70s steps(140, end) infinite; }
-  .cloud.c2 { animation: drift 95s steps(190, end) -30s infinite; }
-  .cloud.c3 { animation: drift 120s steps(240, end) -70s infinite; }
-  @keyframes drift { to { transform: translateX(calc(100vw + 240px)); } }
   .spool { animation: spool 3.2s steps(1, end) infinite; animation-delay: calc(var(--i) * .25s); }
   @keyframes spool { 0%, 100% { opacity: .3; } 10%, 78% { opacity: 1; } }
   .bar b { transform-origin: bottom; animation: grow 3.2s steps(8, end) infinite; animation-delay: calc(var(--i) * .2s); }
   @keyframes grow { 0% { transform: scaleY(.15); } 55%, 100% { transform: scaleY(1); } }
-  .ticker-track { animation: ticker 28s linear infinite; }
+  .ticker-track { animation: ticker 112s linear infinite; }
   @keyframes ticker { to { transform: translateX(-50%); } }
   .blip { animation: blink 1.1s steps(1, end) infinite; }
+}
+
+/* ============ 14 · CIELO =================================================
+ * Estrellas, nubes y voladores (bandadas, avión, cohete, globo y ovni) que
+ * app.js (initSky) reparte por TODO el cielo del hero con un azar de semilla
+ * fija: la misma pantalla se ve igual en cada visita. Cada elemento trae sus
+ * datos en variables (--x, --y en fracción del cielo; --w, --dur, --delay).
+ * Sin movimiento (reduced-motion) las nubes y estrellas quedan quietas en su
+ * sitio y los voladores no se muestran.
+ */
+.hero-sky { position: absolute; inset: 0 0 96px 0; pointer-events: none; z-index: 0; overflow: hidden; }
+
+.star {
+  position: absolute; left: calc(var(--x) * 100%); top: calc(var(--y) * 100%);
+  width: var(--s, 2px); height: var(--s, 2px);
+  background: currentColor; opacity: var(--o, .5);
+}
+.star.cross { box-shadow: var(--s) 0 0 currentColor, calc(var(--s) * -1) 0 0 currentColor,
+                          0 var(--s) 0 currentColor, 0 calc(var(--s) * -1) 0 currentColor; }
+.star.k0 { color: var(--accent); } .star.k1 { color: var(--info); }
+.star.k2 { color: var(--success); } .star.k3 { color: var(--warn-ink); }
+.star.k4 { color: var(--text-muted); }
+
+.cloud {
+  position: absolute; left: calc(var(--x) * 100%); top: calc(var(--y) * 100%);
+  width: var(--w); aspect-ratio: 20 / 8;
+  background: var(--border-accent); opacity: var(--o, .45);
+  -webkit-mask: var(--cloud) center / 100% 100% no-repeat; mask: var(--cloud) center / 100% 100% no-repeat;
+  --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 8' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h6v1H6z M4 1h10v1H4z M2 2h16v1H2z M0 3h20v3H0z M2 6h16v1H2z'/%3E%3C/svg%3E");
+}
+.cloud.long {
+  aspect-ratio: 28 / 9;
+  --cloud: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 9' shape-rendering='crispEdges'%3E%3Cpath d='M7 0h5v1H7z M18 1h4v1h-4z M5 1h9v1H5z M16 2h8v1h-8z M3 2h12v1H3z M1 3h25v1H1z M0 4h28v3H0z M2 7h24v1H2z M5 8h6v1H5z M16 8h7v1h-7z'/%3E%3C/svg%3E");
+}
+
+.flyer { position: absolute; display: none; width: var(--w); color: var(--text); }
+.flyer svg { display: block; width: 100%; height: auto; shape-rendering: crispEdges; opacity: .7; }
+.flyer.rtl svg { transform: scaleX(-1); }
+.flyer path { fill: currentColor; }
+.flyer .a1 { fill: var(--accent); } .flyer .a2 { fill: var(--info); } .flyer .a3 { fill: var(--warn-ink); }
+.flyer .f2 { opacity: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .star.tw { animation: twinkle var(--dur, 3s) steps(1, end) var(--delay, 0s) infinite; }
+  @keyframes twinkle { 0%, 55% { opacity: var(--o, .5); } 56%, 100% { opacity: calc(var(--o, .5) * .25); } }
+
+  /* Nubes: de borde a borde, a saltos de píxel. El retraso negativo las deja
+     repartidas desde el primer cuadro (empiezan donde dice --x). */
+  .cloud { animation: drift var(--dur, 90s) steps(var(--steps, 270), end) var(--delay, 0s) infinite; }
+  @keyframes drift { from { left: calc(var(--w) * -1); } to { left: 100%; } }
+
+  /* Voladores: cruzan en el primer 40 % del ciclo y el resto esperan fuera de
+     la vista, así aparecen de vez en cuando y no todos a la vez. */
+  .flyer { display: block; top: calc(var(--y) * 100%); left: 100%;
+           animation: fly var(--dur, 60s) steps(var(--steps, 240), end) var(--delay, 0s) infinite; }
+  .flyer.rtl { animation-name: fly-rtl; }
+  @keyframes fly { 0% { left: calc(var(--w) * -1); } 40%, 100% { left: 100%; } }
+  @keyframes fly-rtl { 0% { left: 100%; } 40%, 100% { left: calc(var(--w) * -1); } }
+  .flyer.rocket { animation-name: launch; left: calc(var(--x) * 100%); }
+  @keyframes launch {
+    0% { top: 100%; left: calc(var(--x) * 100%); }
+    30%, 100% { top: -20%; left: calc(var(--x) * 100% + 12%); }
+  }
+  .flyer.bob svg { animation: bob 2.4s steps(2, end) infinite; }
+  @keyframes bob { 50% { translate: 0 3px; } }
+  .flyer .f1 { animation: frame-a .5s steps(1, end) infinite; }
+  .flyer .f2 { animation: frame-b .5s steps(1, end) infinite; }
+  @keyframes frame-a { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  @keyframes frame-b { 0%, 49% { opacity: 0; } 50%, 100% { opacity: 1; } }
 }

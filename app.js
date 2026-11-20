@@ -336,8 +336,122 @@ function showLoadError() {
   ))
 }
 
+/* ── Cielo del hero ─────────────────────────────────────────────────────── */
+
+// Sprites en píxel (rejilla = viewBox). currentColor es el color del texto y
+// a1/a2/a3 los acentos del tema; f1/f2 son los dos cuadros de una animación
+// (alas arriba/abajo, llama corta/larga). Son cadenas fijas nuestras.
+const SPRITES = {
+  flock: { vb: '0 0 24 11', html:
+    '<path class="f1" d="M0 0h1v1H0z M1 1h1v1H1z M2 2h3v1H2z M5 1h1v1H5z M6 0h1v1H6z' +
+    ' M9 4h1v1H9z M10 5h1v1h-1z M11 6h3v1h-3z M14 5h1v1h-1z M15 4h1v1h-1z' +
+    ' M17 7h1v1h-1z M18 8h1v1h-1z M19 9h3v1h-3z M22 8h1v1h-1z M23 7h1v1h-1z"/>' +
+    '<path class="f2" d="M0 2h2v1H0z M2 1h3v1H2z M5 2h2v1H5z' +
+    ' M9 6h2v1H9z M11 5h3v1h-3z M14 6h2v1h-2z' +
+    ' M17 9h2v1h-2z M19 8h3v1h-3z M22 9h2v1h-2z"/>' },
+  plane: { vb: '0 0 20 8', html:
+    '<path fill="currentColor" d="M1 1h2v2H1z M1 3h17v2H1z M18 4h1v1h-1z M7 2h4v1H7z M7 5h5v1H7z M8 6h3v1H8z"/>' +
+    '<path class="a2" d="M12 3h1v1h-1z M14 3h1v1h-1z M16 3h2v1h-2z"/>' +
+    '<path class="a1" d="M1 1h1v1H1z"/>' },
+  rocket: { vb: '0 0 7 14', html:
+    '<path fill="currentColor" d="M3 0h1v1H3z M2 1h3v8H2z M1 6h1v3H1z M5 6h1v3H5z M0 8h1v1H0z M6 8h1v1H6z"/>' +
+    '<path class="a2" d="M3 3h1v2H3z"/>' +
+    '<path class="a1" d="M3 0h1v1H3z M2 9h3v1H2z"/>' +
+    '<path class="a3 f1" d="M2 10h3v1H2z M3 11h1v1H3z"/>' +
+    '<path class="a3 f2" d="M2 10h3v2H2z M3 12h1v2H3z"/>' },
+  balloon: { vb: '0 0 9 12', html:
+    '<path class="a1" d="M3 0h3v1H3z M2 1h5v1H2z M1 2h7v3H1z M2 5h5v1H2z M3 6h3v1H3z"/>' +
+    '<path class="a3" d="M4 0h1v7H4z M2 1h1v5H2z M6 1h1v5H6z"/>' +
+    '<path fill="currentColor" d="M3 7h1v2H3z M5 7h1v2H5z M3 9h3v2H3z"/>' },
+  ufo: { vb: '0 0 11 6', html:
+    '<path class="a2" d="M4 0h3v1H4z M3 1h5v1H3z"/>' +
+    '<path fill="currentColor" d="M1 2h9v1H1z M0 3h11v1H0z M2 4h7v1H2z"/>' +
+    '<path class="a1 f1" d="M2 3h1v1H2z M8 3h1v1H8z"/>' +
+    '<path class="a3 f2" d="M5 3h1v1H5z"/>' +
+    '<path class="a2" d="M4 5h1v1H4z M6 5h1v1H6z"/>' },
+}
+
+// Qué cruza el cielo y cómo: escala del píxel, duración del ciclo (s) y banda
+// de altura (fracción del cielo). Cruzan en el 40 % del ciclo (styles.css).
+const FLYERS = [
+  { kind: 'flock', scale: 2, dur: 52, y: [0.08, 0.40], cls: 'bob' },
+  { kind: 'flock', scale: 2, dur: 64, y: [0.20, 0.55], cls: 'bob rtl' },
+  { kind: 'plane', scale: 3, dur: 46, y: [0.04, 0.22], cls: '' },
+  { kind: 'rocket', scale: 3, dur: 40, y: [0, 0], cls: '' },
+  { kind: 'balloon', scale: 4, dur: 130, y: [0.25, 0.60], cls: 'bob' },
+  { kind: 'ufo', scale: 3, dur: 82, y: [0.06, 0.30], cls: 'bob rtl' },
+]
+
+/** Azar con semilla (mulberry32): el cielo sale igual en cada visita. */
+function seeded(seed) {
+  return () => {
+    seed = (seed + 0x6D2B79F5) | 0
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+function initSky() {
+  const sky = $('.hero-sky')
+  if (!sky) return
+  const rnd = seeded(20261119)
+  const pick = (a, b) => a + rnd() * (b - a)
+  const css = (vars) => Object.entries(vars).map(([k, v]) => `--${k}:${v}`).join(';')
+  const { width, height } = sky.getBoundingClientRect()
+  const nodes = []
+
+  // Estrellas: una cada ~11 000 px² del cielo; algunas en cruz y casi todas titilan.
+  const stars = Math.max(24, Math.min(170, Math.round((width * height) / 11000)))
+  for (let i = 0; i < stars; i++) {
+    const big = rnd() < 0.12
+    const size = big ? 2 : rnd() < 0.55 ? 2 : 3
+    nodes.push(el('i', {
+      class: `star k${Math.floor(rnd() * 5)}${big ? ' cross' : ''}${rnd() < 0.8 ? ' tw' : ''}`,
+      style: css({
+        x: pick(0.01, 0.99).toFixed(3), y: pick(0.02, 0.97).toFixed(3), s: `${size}px`,
+        o: pick(0.35, 0.7).toFixed(2), dur: `${pick(1.8, 4.2).toFixed(1)}s`,
+        delay: `${(-pick(0, 4)).toFixed(1)}s`,
+      }),
+    }))
+  }
+
+  // Nubes: de 36 a 170 px; las grandes (más cerca) van más rápido y se ven más.
+  const clouds = Math.max(5, Math.min(12, Math.round(width / 170)))
+  for (let i = 0; i < clouds; i++) {
+    const w = Math.round(pick(36, 170))
+    const near = (w - 36) / 134
+    const dur = Math.round(150 - near * 85)
+    const x = (i + rnd() * 0.8) / clouds // repartidas a lo ancho desde el inicio
+    nodes.push(el('span', {
+      class: `cloud${rnd() < 0.4 ? ' long' : ''}`,
+      style: css({
+        x: x.toFixed(3), y: pick(0.02, 0.72).toFixed(3), w: `${w}px`,
+        o: (0.18 + near * 0.22).toFixed(2), dur: `${dur}s`, steps: dur * 3,
+        delay: `${(-x * dur).toFixed(1)}s`,
+      }),
+    }))
+  }
+
+  for (const f of FLYERS) {
+    const sprite = SPRITES[f.kind]
+    const [, , vw] = sprite.vb.split(' ').map(Number)
+    nodes.push(el('span', {
+      class: `flyer ${f.kind} ${f.cls}`.trim(),
+      style: css({
+        w: `${vw * f.scale}px`, x: pick(0.1, 0.8).toFixed(3), y: pick(...f.y).toFixed(3),
+        dur: `${f.dur}s`, steps: f.dur * 4, delay: `${(-pick(0, f.dur)).toFixed(1)}s`,
+      }),
+      html: `<svg viewBox="${sprite.vb}" aria-hidden="true" focusable="false">${sprite.html}</svg>`,
+    }))
+  }
+
+  sky.replaceChildren(...nodes)
+}
+
 /* ── Arranque ───────────────────────────────────────────────────────────── */
 
+initSky()
 const os = detectOS()
 initTheme()
 initCopy()
