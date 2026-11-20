@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Press+Start+2P&display=swap" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -37,10 +37,9 @@
   <header class="topbar">
     <div class="wrap">
       <a class="brand" href="#top">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="7" fill="#A8501E" />
-          <text x="16" y="22" font-family="monospace" font-size="15" font-weight="700"
-                fill="#FDF8EE" text-anchor="middle">T</text>
+        <svg class="brand-mark" viewBox="0 0 16 16" aria-hidden="true" shape-rendering="crispEdges">
+          <rect width="16" height="16" fill="#A8501E" />
+          <path fill="#FDF8EE" d="M3 4h10v3H3z M6 7h4v6H6z" />
         </svg>
         Telar
       </a>
@@ -85,6 +84,30 @@
     <!-- ============ HERO =============================================== -->
     <section class="hero">
       <div class="wrap">
+        <!-- Decoración 8-bit: ocho "hilos" que se encienden y una barra de speedup.
+             Es puramente visual (aria-hidden): no representa ninguna medición. -->
+        <div class="hud" aria-hidden="true">
+          <div class="hud-row">
+            <svg class="px-chip" viewBox="0 0 10 10" shape-rendering="crispEdges">
+              <path fill="currentColor" fill-rule="evenodd"
+                    d="M2 2h6v6H2z M4 4v2h2V4z M3 0h1v2H3z M6 0h1v2H6z M3 8h1v2H3z M6 8h1v2H6z M0 3h2v1H0z M0 6h2v1H0z M8 3h2v1H8z M8 6h2v1H8z" />
+            </svg>
+            <span class="px">Hilos</span>
+            <span class="cores">
+              <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i>
+              <i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i>
+            </span>
+          </div>
+          <div class="hud-row">
+            <svg class="px-chip" viewBox="0 0 9 8" shape-rendering="crispEdges">
+              <path fill="currentColor"
+                    d="M5 0h2v1H5z M4 1h2v1H4z M3 2h2v1H3z M2 3h5v1H2z M4 4h2v1H4z M3 5h2v1H3z M2 6h2v1H2z M1 7h2v1H1z" />
+            </svg>
+            <span class="px">Speedup</span>
+            <span class="meter"><i></i></span>
+          </div>
+        </div>
+
         <h1>Aprende paralelismo ejecutando código real</h1>
         <p class="lede">
           Telar es un simulador educativo de <b>OpenMP con PyOMP</b>. Lee las lecciones,
@@ -93,11 +116,19 @@
         </p>
 
         <div class="hero-cta">
+          <p class="press-start px" aria-hidden="true">Pulsa start</p>
           <!-- Rellenado por app.js segun el sistema detectado. -->
           <div class="cta-row" data-hero-cta>
             <a class="btn btn-accent btn-xl" href="#descargas">Ver descargas</a>
           </div>
           <p class="cta-meta" data-hero-meta></p>
+          <a class="video-link" href="#video">
+            <svg viewBox="0 0 12 11" width="18" height="16" aria-hidden="true" shape-rendering="crispEdges">
+              <path fill="currentColor" fill-rule="evenodd"
+                    d="M1 1h10v7H1z M2 2v5h8V2z M4 2h1v5H4z M5 3h1v3H5z M6 4h1v1H6z M4 9h4v1H4z" />
+            </svg>
+            Mira el video de instalación
+          </a>
         </div>
 
         <div class="hero-notice">
@@ -121,10 +152,47 @@
       </div>
     </section>
 
+    <!-- ============ VIDEO ============================================== -->
+    <section class="section" id="video">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow px" aria-hidden="true">Tutorial</p>
+          <h2>Mira cómo descargar e instalar Telar</h2>
+          <p>
+            Un recorrido corto por todo el proceso, de principio a fin. Si prefieres leerlo,
+            los pasos están más abajo en <a href="#instalacion">Cómo instalarlo</a>.
+          </p>
+        </div>
+
+        <div class="video-frame">
+          <div class="video-bar" aria-hidden="true">
+            <svg viewBox="0 0 12 11" width="18" height="16" shape-rendering="crispEdges">
+              <path fill="currentColor" fill-rule="evenodd"
+                    d="M1 1h10v7H1z M2 2v5h8V2z M4 2h1v5H4z M5 3h1v3H5z M6 4h1v1H6z M4 9h4v1H4z" />
+            </svg>
+            <span class="px">Paso a paso</span>
+            <span class="video-dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="video-embed">
+            <iframe src="https://www.youtube-nocookie.com/embed/1HCwLRCwZ9w"
+                    title="Tutorial de instalación para Telar - Simulador educativo"
+                    loading="lazy" allowfullscreen
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+        <p class="video-alt">
+          ¿No carga el video?
+          <a href="https://www.youtube.com/watch?v=1HCwLRCwZ9w" rel="noopener" target="_blank">Míralo en YouTube</a>.
+        </p>
+      </div>
+    </section>
+
     <!-- ============ DESCARGAS ========================================== -->
     <section class="section" id="descargas">
       <div class="wrap">
         <div class="section-head">
+          <p class="eyebrow px" aria-hidden="true">Nivel 1</p>
           <h2>Descargas</h2>
           <p>
             Todos los archivos se sirven desde GitHub Releases. Cada plataforma tiene
@@ -157,6 +225,7 @@
     <section class="section" id="instalacion">
       <div class="wrap">
         <div class="section-head">
+          <p class="eyebrow px" aria-hidden="true">Nivel 2</p>
           <h2>Cómo instalarlo</h2>
           <p>Elige tu sistema. Son cuatro pasos y solo hay que hacerlos una vez.</p>
         </div>
@@ -283,6 +352,7 @@
     <section class="section" id="requisitos">
       <div class="wrap">
         <div class="section-head">
+          <p class="eyebrow px" aria-hidden="true">Inventario</p>
           <h2>Requisitos y notas</h2>
         </div>
         <div class="notice-stack">
@@ -329,6 +399,7 @@
     <section class="section" id="verificar">
       <div class="wrap">
         <div class="section-head">
+          <p class="eyebrow px" aria-hidden="true">Bonus</p>
           <h2>Verificar la descarga</h2>
           <p>
             Opcional, pero es la forma de comprobar que el archivo que bajaste es
@@ -379,8 +450,10 @@
           Pontificia Universidad Javeriana.
         </p>
         <p data-footer-version></p>
+        <p class="px footer-px" aria-hidden="true">¡Que los hilos te acompañen!</p>
       </div>
       <nav aria-label="Enlaces">
+        <a href="#video">Video de instalación</a>
         <a href="#descargas">Descargas</a>
         <a href="#instalacion">Instalación</a>
         <a href="#requisitos">Requisitos</a>
